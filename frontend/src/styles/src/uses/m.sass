@@ -1,0 +1,15 @@
+@use '@styles/t'
+
+.--hide
+	display: none
+	width: 0.1px
+	height: 0.1px
+	opacity: 0
+	overflow: hidden
+	position: absolute
+	left: -9000px
+	z-index: -1
+
+.--disable
+	opacity: t.$op
+	pointer-events: none

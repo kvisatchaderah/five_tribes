@@ -1,0 +1,21 @@
+@use '@styles/t'
+$cols_quantity: 12
+
+.row
+	display: grid
+	grid-template-columns: repeat($cols_quantity, 1fr)
+	grid-template-rows: auto
+	gap: t.$d_xl
+
+.col
+	grid-column: span $cols_quantity
+
+@each $breakpoint_name, $breakpoint_value in t.$breakpoints
+	@for $col_current from 0 through $cols_quantity
+		@media (min-width: #{$breakpoint_value}px)
+			.#{$breakpoint_name}\:col_#{$col_current}
+				@if ($col_current == 0)
+					display: none
+				@else
+					display: inherit
+					grid-column: span $col_current

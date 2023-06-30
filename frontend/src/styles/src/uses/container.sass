@@ -1,0 +1,30 @@
+@use '@styles/t'
+
+// container
+@each $breakpoint_name_out, $breakpoint_value_out in t.$breakpoints
+	.#{$breakpoint_name_out}\:container
+		margin-left: auto
+		margin-right: auto
+
+		width: 100%
+
+		@each $breakpoint_name_in, $breakpoint_value_in in t.$breakpoints
+			@if $breakpoint_value_in > $breakpoint_value_out
+				@media (min-width: #{$breakpoint_value_in}px)
+					max-width: #{$breakpoint_value_in}px
+
+// vertical
+$verticals: ('false': 0, 'true': t.$d, 'l': t.$d_l, 'xl': t.$d_xl)
+
+@each $vertical_key, $vertical_value in	$verticals
+	.#{$vertical_key}\:vertical
+		padding-top: $vertical_value
+		padding-bottom: $vertical_value
+
+// horizontal
+$horizontals: ('false': 0, 'true': t.$d, 'l': t.$d_l, 'xl': t.$d_xl)
+
+@each $horizontal_key, $horizontal_value in	$horizontals
+	.#{$horizontal_key}\:horizontal
+		padding-left: $horizontal_value
+		padding-right: $horizontal_value

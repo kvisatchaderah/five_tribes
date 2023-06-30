@@ -1,0 +1,13 @@
+@use '@styles/t'
+
+$max_width: calc(100vw - 2 * t.$d)
+$max_height: calc(100vh - 2 * t.$d)
+$scroll: auto
+
+$overflows: ('true': ('overflow': $scroll, 'max-height': $max_height, 'max-width': $max_width), 'x': ('overflow-x': $scroll, 'max-width': $max_width),'y': ('overflow-y': $scroll, 'max-height': $max_height))
+
+@mixin overflow($overflow_props: 'true')
+	@each $overflow_key, $overflow_value in $overflows
+		@if $overflow_key == $overflow_props
+			@each $rule_key, $rule_value in $overflow_value
+				#{$rule_key}: $rule_value
